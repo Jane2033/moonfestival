@@ -1,0 +1,853 @@
+@forward 'global';
+
+@mixin flexCenter($justify:center, $align_items:center, $direction:row){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align_items;
+    flex-direction: $direction;
+}
+
+@mixin hoverStyle{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    position: absolute;
+    bottom: 0;
+    transform: scaleX(0);
+    transition: 0.4s;  
+}
+
+@keyframes breathe {
+    0%{
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    50%{
+        transform: scale(1.4);
+    }
+
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes mymove1{
+    0%, 100%{
+        transform: translateY(50%);
+    }
+
+    50%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes mymove2{
+    0%, 100%{
+        transform: translateY(-20%);
+    }
+
+    50%{
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes star {
+    0%,100%{
+        transform: scale(0.8);
+    }
+
+    50%{
+        transform: scale(1.2);
+    }
+}
+
+*, html{
+    scroll-behavior: smooth;
+}
+
+body{
+    @include flexCenter($justify:start, $direction:column);
+    position: relative;
+    overflow-x: hidden;
+    background: url('../img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;    
+    max-width: 1920px;
+    margin: 0 auto;
+
+    header{
+        width: 100%;
+        position: fixed;
+        z-index: 99;
+        background-color: #8F2A29;
+        
+    
+        .navbar{
+            @include flexCenter($direction: column);
+            gap: 0.5rem;
+            margin: 0.5rem 1rem;
+    
+            @media (min-width: 1024px) {
+                margin: 1rem 6rem 0.5rem 6rem;            
+            }
+
+            &__main{
+                @include flexCenter(space-between);
+                width: 100%;
+                
+
+                &__logo{
+                    max-height: 3rem;
+                }
+
+                &__social{
+                    @include flexCenter;
+                }
+
+                &__item{  
+                    position: relative;   
+                    @include flexCenter;
+                    margin: 0 0.5rem;    
+    
+                    @media (min-width: 1024px) {                       
+                    }
+
+                    &__icon{
+                        padding: 0.5rem;
+                        font-size: 24px;
+                        color: #ffffff;
+                    }
+
+
+                    &::after{
+                        @include hoverStyle;                      
+                    }
+
+                    &:hover::after{
+                        transform: scaleX(1); 
+                    }
+                }
+            }
+
+            &__sub{
+                @include flexCenter(space-between);
+                width: 100%;
+                list-style: none;
+
+                &__item{
+                    @include flexCenter($direction: column);
+                    
+                    position: relative;
+
+                    a{
+                        margin: 0.5rem;
+                        color: #ffffff;
+                    }
+
+                    &::after{
+                        @include hoverStyle;                      
+                    }
+
+                    &:hover::after{
+                        transform: scaleX(1); 
+                    }
+                    
+                }
+
+            }
+
+
+
+            
+
+        }
+    }
+    
+    .bar-up{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 0.5rem 0.875rem;
+        margin: 1rem;
+        font-size: 32px;
+        background: #ffffff;
+        border-radius: 100%;
+        z-index: 98;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: clip;
+
+    @media (min-width: 768px) {
+        
+    }
+
+    @media (min-width: 1024px) {
+
+    }
+
+    &__container{
+        width: 100%;
+        height: 100%;  
+        position: relative;
+        @include flexCenter;
+        
+        &__content{
+            @include flexCenter($direction: column);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+    
+            @media (min-width: 768px) {
+                
+            }
+            
+
+            .title_img{
+                margin-top: 7rem;
+                animation: breathe 1s ease-in-out;
+                max-width: 100%;
+
+                @media (min-width: 768px) {  
+                }
+
+                @media (min-width: 1024px){
+                    
+                }
+            }
+
+            .subtitle_img{
+                max-width: 300px;
+            }       
+
+        }
+
+        #moon, #fg-right, #fg-left, #leaf-right, #leaf-left{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &__cloud{
+            width: 100%;
+            height: 75%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+
+            @media (min-width: 640px) {
+                @include flexCenter($direction: column);   
+            }
+
+            &__top{
+                width: 100%;
+                height: 50%;
+                @include flexCenter($justify: space-between);
+
+                #cloud1{
+                    max-width: 150px;
+                    margin-top: 7rem;
+                    animation: mymove1 5s ease-in-out infinite;
+                }
+
+                #cloud2{
+                    max-width: 150px;
+                    margin-right: 7rem;
+                    animation: mymove2 5s ease-in-out infinite;
+                }
+
+            }
+
+            &__bottom{
+                width: 100%;
+                height: 50%;
+                @include flexCenter($justify: space-between);
+
+                #cloud3{
+                    max-width: 150px;
+                    margin-left: 15rem;
+                    animation: mymove2 5s ease-in-out infinite;
+                }
+
+                #cloud4{
+                    max-width: 150px;
+                    margin-right: 15rem;
+                    margin-bottom: 15rem;
+                    animation: mymove1 5s ease-in-out infinite;
+                }
+
+            }
+        }
+
+        &__stars{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            &__wrapper{
+                width: 100%;
+                height: 100%;
+                position: relative;
+
+                #star1{
+                    position: absolute;
+                    top: 10%;
+                    left: 10%;
+                    animation: star 2s ease-in-out infinite;
+                }
+
+                #star2{
+                    position: absolute;
+                    top: 30%;
+                    left: 20%;
+                    animation: star 2s ease-in-out infinite;
+                }
+
+                #star3{
+                    position: absolute;
+                    top: 40%;
+                    right: 30%;
+                    animation: star 2s ease-in-out infinite;
+                }
+
+                #star4{
+                    position: absolute;
+                    top: 20%;
+                    right: 10%;
+                    animation: star 2s ease-in-out infinite;
+                }
+
+            }
+        }
+
+    }
+
+
+}
+
+.sec{
+    position: relative;
+    width: 100%;  
+}
+
+
+.section2{
+    @include flexCenter;
+
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+
+    @media (min-width: 640px) {        
+
+    }
+
+    @media (min-width: 768px) {        
+    
+    }
+
+    @media (min-width: 1024px) {        
+ 
+    }
+
+    &__container{
+        @include flexCenter($direction:column);
+        width: 100%;
+        background: none; 
+        position: relative;  
+
+        @media (min-width: 640px) {
+
+        }
+
+
+        .free{
+            @include flexCenter($justify: start,$direction: column);            
+            margin: 1.5rem;
+
+            @media (min-width: 640px) {
+
+            }
+
+            @media (min-width: 1024px) {
+
+            }
+
+
+            &__items{
+                position: relative;
+                display: none;
+                width: 100%;                
+
+                @media (min-width: 768px) {
+                    @include flexCenter;
+                }
+
+                @media (min-width: 1024px) {
+                
+                }
+
+                a{
+                    @include flexCenter;
+                    width: 30%;
+                    margin: 0.5rem;
+
+                    @media (min-width: 640px) {
+                        
+                    }
+    
+                    @media (min-width: 768px) {
+                        
+                    }
+    
+                    @media (min-width: 1024px) {
+                        
+                    }
+
+                    img{
+                        object-fit: contain;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .swiper{
+                
+                width: 300px;
+                height: 250px;
+
+                @media (min-width: 768px) {
+                    display: none;                    
+                }
+
+                .swiper-wrapper{
+
+                    .swiper-slide{
+
+                        a{
+                            width: 100%;
+
+                            img{
+                                object-fit: contain;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+                .swiper-pagination-bullet {
+                    width: 15px;
+                    height: 15px;
+                    text-align: center;
+                    opacity: 1;
+                    background: rgba(0, 0, 0, 0.2);
+                }
+
+                .swiper-pagination-bullet-active {
+                    background: #8F2A29;
+                }
+
+            }
+            
+        }
+
+
+
+    }
+}
+
+.s_product{
+    @include flexCenter($direction: column);
+    width: 100%;
+    margin: 2rem 0 2rem 0;
+
+
+    .s_product_title{
+        @include flexCenter;
+        margin: 1rem;
+        width: 100%;
+
+        img{            
+            width: 80%;
+            
+
+            @media (min-width: 1024px) {
+                width: 50%;
+            }
+        }
+    }
+
+    .s_product_container{
+        position: relative;
+        @include flexCenter;
+        padding: 1rem;
+        width: 100%;
+        height: auto;
+
+        @media (min-width: 768px) {
+            padding: 4rem;              
+        }
+
+        @media (min-width: 1024px) {
+            padding: 2rem;
+        }
+
+        .bg_section{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            display: none;
+
+            @media (min-width: 1024px) {
+                display: block;             
+            }
+
+            @media (min-width: 1280px) {
+                display: none;             
+            }
+        }
+
+        .bg_sectionsm{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            display: block;
+
+            @media (min-width: 540px) {
+                display: none;                
+            }
+        }
+
+        .bg_sectionlg{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            display: none;
+
+            @media (min-width: 540px) {
+                display: block;                
+            }
+
+            @media (min-width: 1024px) {
+                display: none;                
+            }
+        }
+
+        .bg_section2xl{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            display: none;
+
+            @media (min-width: 1280px) {
+                display: block;             
+            }
+        }
+
+
+        .card-wrapper{
+            width: 80%;
+            position: relative;
+            @include flexCenter($direction: column);
+            padding: 0.5rem;
+            
+
+    
+            @media (min-width: 1024px) {
+                width: 80%;
+                @include flexCenter;
+                padding: 1rem;      
+            }
+    
+            .row{
+                @include flexCenter;
+            }
+            
+            
+            a{
+                @include flexCenter;
+    
+                .card{         
+                    @include flexCenter($align-items: start,$direction: column);
+                    min-width: 150px;
+                    max-width: 300px;
+                    justify-self: center;
+                    transition: all 0.3s;
+                    margin: 0.5rem;
+                    
+    
+                    @media (min-width: 768px) {
+    
+                    }
+    
+                    @media (min-width: 1024px) {
+    
+                    }
+                    
+                    
+                    &:hover{
+                        cursor: pointer;
+                        transform: scale(1.03);
+                        box-shadow: 0px 0px 20px #ffffff;    
+                        
+                    }
+    
+                    &__img{
+                        width: 100%;
+                    }
+        
+        
+                    &__body{
+                        @include flexCenter($align_items: start, $direction: column);
+                        background: #ffffff;
+                        width: 100%;
+                        border-bottom-left-radius: 8px;
+                        border-bottom-right-radius: 8px;
+        
+                        &__title{
+                            margin: 1rem 1rem 0;
+                            min-height: 75px;
+                        }
+        
+                        &__info{
+                            @include flexCenter($justify: space-between);
+                            width: 100%;
+        
+                            &--price{
+                                @include flexCenter($direction: column,$align_items: baseline);
+                                margin: 1rem 0;
+    
+                                @media (min-width: 1024px) {
+    
+                                }
+                                
+                                h6{
+                                    color: #8F2A29;
+                                }
+    
+                                span{
+                                    margin: 0 0 0.5rem 1rem;
+                                    text-decoration: line-through;
+                                }
+                            }
+        
+                            &--cta{
+                                padding: 0.5rem;
+                                margin: 0.5rem;
+                                font-size: 1.5rem;
+                            }
+        
+                            
+                        }
+                    }
+                }
+            }
+    
+        }
+    }
+
+
+}
+
+
+footer{
+    @include flexCenter($align-items: start ,$direction: column);    
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: #FAFAFA;
+
+    @media (min-width: 1024px) {
+        padding: 1rem 6rem;        
+    }
+    
+    ul li{
+        list-style: none;
+    }
+
+    .footer__content{
+        @include flexCenter($justify: start ,$align-items: start ,$direction: column);
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            @include flexCenter($justify: space-between,$align-items: start, $direction: row);            
+        }
+    }
+
+    .footer__title{
+        margin: 1.5rem 0 0;
+
+        @media (min-width: 1024px) {
+            margin: 1rem 0 0;            
+        }
+    }
+
+
+
+        
+    
+
+    .contact{
+        @include flexCenter($justify: start);
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            width: 30%;            
+        }
+
+
+    }
+
+    .otherinfo{
+        @include flexCenter($justify: start);
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            @include flexCenter($justify: space-between, $align-items: start);
+            width: 30%;            
+        }
+    }
+
+    .aboutus{
+        @include flexCenter($align_items: start ,$direction: column);
+        margin-right: 2rem;
+        &__items{
+            margin: 0.75rem 0 0;
+            @include flexCenter($align_items: start ,$direction: column);
+            
+
+            &__item{
+                padding: 0.5rem 0;
+                position: relative;
+                cursor: pointer;
+                gap: 0.25rem;
+
+                a{
+                    @include flexCenter($direction: column);
+                    &::after{
+                        @include hoverStyle;                      
+                    }
+            
+                    &:hover::after{
+                        transform: scaleX(1); 
+                    }
+
+                    &:hover{
+                        color: #8F2A29;
+                    } 
+                }
+            }
+        }
+    }
+
+
+    .follow{
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            width: 30%;            
+        }
+
+        &__items{
+            @include flexCenter($align-items: start, $justify: start, $direction: column);
+            gap: 0.5rem;
+            margin: 1rem 0 0;
+
+            &__item{
+                @include flexCenter($direction: column);
+                width: 100%;
+
+                input{
+                    width: 100%;
+                    padding: 0.5rem 1rem;
+                }
+
+                button{
+                    width: 100%;
+                    background-color: #8F2A29;
+                    color: #ffffff;
+                    border: 0;
+                    border-radius: 0.25rem;
+                    padding: 1rem;
+                    margin: 0.5rem 0 1rem 0;
+                    cursor: pointer;
+                    
+                    &:hover{
+                        background-color: #C63A39;
+                    }
+                }
+
+            }
+
+            &__download{
+                @include flexCenter($justify: space-between);
+                width: 100%;
+                a{
+                    width: 50%;
+
+                    img{
+                        object-fit: contain;
+                        width: 100%;
+                        
+
+                        @media (min-width: 768px) {
+                            
+                        }
+                    
+                    }
+                }
+
+
+
+            }
+
+        }
+    }
+
+    .copy-right{
+        @include flexCenter($justify: space-between);
+        width: 100%;
+        margin: 1rem 0 0;
+        border-top: solid 1px;
+        padding: 1rem;
+
+        @media (min-width: 1024px) {
+            margin: 3rem 0 0;            
+        }
+
+        p{
+            color: #B3B3B3;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

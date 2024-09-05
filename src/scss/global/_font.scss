@@ -1,0 +1,81 @@
+:root{
+    --font-family: "Noto Sans TC", sans-serif;
+}
+
+
+h1{
+    font-size: 3rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @media(min-width: 1024px) {
+        font-size: 3.75rem;
+    }
+}
+
+h2{
+    font-size: 2.5rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @media(min-width: 1024px) {
+        font-size: 3rem;
+    }
+}
+
+h3{
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @media(min-width: 1024px) {
+        font-size: 2.5rem;
+    }
+}
+
+h4{
+    font-size: 1.5rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @media(min-width: 1024px) {
+        font-size: 2rem;
+    }
+}
+
+h5{
+    font-size: 1.25rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @media(min-width: 1024px) {
+        font-size: 1.5rem;
+    }
+}
+
+h6{
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @media(min-width: 1024px) {
+        font-size: 1.25rem;
+    }
+}
+
+p{
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+span{
+    font-size: 0.75rem;
+    line-height: 1.25;
+    font-weight: 400;
+}
+
+a, a:visited, a:active{
+    text-decoration: none;
+    color: var(--text-color);
+}
