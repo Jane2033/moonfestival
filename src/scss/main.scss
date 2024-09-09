@@ -34,6 +34,18 @@
     }
 }
 
+@keyframes mymove{
+    0%{
+        transform: translateY(50%);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 @keyframes mymove1{
     0%, 100%{
         transform: translateY(50%);
@@ -65,6 +77,16 @@
     }
 }
 
+@keyframes star2 {
+    0%,100%{
+        transform: scale(0.8);
+    }
+
+    50%{
+        transform: scale(1.5);
+    }
+}
+
 *, html{
     scroll-behavior: smooth;
 }
@@ -72,7 +94,6 @@
 body{
     @include flexCenter($justify:start, $direction:column);
     position: relative;
-    overflow-x: hidden;
     background: url('../img/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -99,10 +120,15 @@ body{
             &__main{
                 @include flexCenter(space-between);
                 width: 100%;
+
+                @media (min-width: 768px) {
+                    
+                }
                 
 
                 &__logo{
                     max-height: 3rem;
+                    margin-left: 1rem;
                 }
 
                 &__social{
@@ -132,38 +158,48 @@ body{
                         transform: scaleX(1); 
                     }
                 }
+            }           
+        }
+
+        .navbar-sub{
+            @include flexCenter($justify: start);
+            list-style: none;
+            overflow-x: auto;
+
+
+            @media (min-width: 640px) {
+                @include flexCenter;                
             }
 
-            &__sub{
-                @include flexCenter(space-between);
-                width: 100%;
-                list-style: none;
+            &__item{             
+                min-width: 150px;
+                @include flexCenter;  
 
-                &__item{
-                    @include flexCenter($direction: column);
-                    
+                @media (min-width: 640px) {
+                    padding-bottom: 0.5rem;
+                }             
+
+                a{
                     position: relative;
-
-                    a{
-                        margin: 0.5rem;
-                        color: #ffffff;
-                    }
-
-                    &::after{
-                        @include hoverStyle;                      
-                    }
-
-                    &:hover::after{
-                        transform: scaleX(1); 
-                    }
+                    color: #ffffff;
                     
+
+                    p{
+                        @include flexCenter;
+                        padding: 0.5rem;
+
+                        &::after{
+                            @include hoverStyle;                      
+                        }
+        
+                        &:hover::after{
+                            transform: scaleX(1); 
+                        }
+                    }
                 }
-
+                
+                
             }
-
-
-
-            
 
         }
     }
@@ -172,8 +208,8 @@ body{
         position: fixed;
         bottom: 0;
         right: 0;
-        padding: 0.5rem 0.875rem;
-        margin: 1rem;
+        padding: 0.09375rem 0.5rem;
+        margin: 0.5rem;
         font-size: 32px;
         background: #ffffff;
         border-radius: 100%;
@@ -219,18 +255,31 @@ body{
             .title_img{
                 margin-top: 7rem;
                 animation: breathe 1s ease-in-out;
-                max-width: 100%;
+                max-width: 300px;
 
-                @media (min-width: 768px) {  
+                @media (min-width: 640px) {  
+                }
+
+                @media (min-width: 768px) { 
+                    max-width: 400px;  
                 }
 
                 @media (min-width: 1024px){
-                    
+                    max-width: 600px;                     
                 }
             }
 
             .subtitle_img{
                 max-width: 300px;
+                animation: mymove 1.6s ease-in-out;
+
+                @media (min-width: 768px) { 
+                    max-width: 350px; 
+                }
+
+                @media (min-width: 1024px) { 
+                    max-width: 400px; 
+                }
             }       
 
         }
@@ -346,16 +395,22 @@ body{
 
 .sec{
     position: relative;
-    width: 100%;  
+    width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 7rem;
 }
+
 
 
 .section2{
     @include flexCenter;
-
+    background: url('../img/bg_s2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     overflow-x: hidden;
     width: 100%;
+    height: 100vh;
 
     @media (min-width: 640px) {        
 
@@ -372,6 +427,7 @@ body{
     &__container{
         @include flexCenter($direction:column);
         width: 100%;
+        height: 100%;
         background: none; 
         position: relative;  
 
@@ -379,12 +435,40 @@ body{
 
         }
 
+        #star5{
+            position: absolute;
+            top: 20%;
+            right: 35%;
+            animation: star 2s ease-in-out infinite;
+        }
+
+        #star6{
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            animation: star 2s ease-in-out infinite;
+        }
+
+        #star7{
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            animation: star 2s ease-in-out infinite;
+        }
+
+
 
         .free{
             @include flexCenter($justify: start,$direction: column);            
             margin: 1.5rem;
 
             @media (min-width: 640px) {
+                @include flexCenter($direction: row);
+
+            }
+
+            @media (min-width: 768px) {
+                @include flexCenter($direction: column);
 
             }
 
@@ -431,9 +515,10 @@ body{
             }
 
             .swiper{
-                
-                width: 300px;
+                margin: 1rem;
+                width: 200px;
                 height: 250px;
+                @include flexCenter;
 
                 @media (min-width: 768px) {
                     display: none;                    
@@ -453,6 +538,7 @@ body{
                         }
                     }
                 }
+
 
                 .swiper-pagination-bullet {
                     width: 15px;
@@ -475,19 +561,48 @@ body{
     }
 }
 
+
+.cake-right{
+    position: absolute;
+    top: 30%;
+    right: -5%;
+    animation: mymove1 8s infinite ease-in-out;
+}
+
+.cake-left{
+    position: absolute;
+    bottom: 15%;
+    left: -5%;
+    animation: mymove2 5s infinite ease-in-out;
+}
+
+.light-right{
+    position: absolute;
+    bottom: 25%;
+    right: 0%;
+    animation: star2 5s infinite ease-in-out;
+}
+
+.light-left{
+    position: absolute;
+    top: 5%;
+    left: 0;
+    animation: star2 5s infinite ease-in-out;    
+}
+
+
 .s_product{
     @include flexCenter($direction: column);
     width: 100%;
-    margin: 2rem 0 2rem 0;
 
 
     .s_product_title{
         @include flexCenter;
-        margin: 1rem;
         width: 100%;
 
         img{            
-            width: 80%;
+            width: 100%;
+            margin-top: 7rem;
             
 
             @media (min-width: 1024px) {
@@ -501,83 +616,73 @@ body{
         @include flexCenter;
         padding: 1rem;
         width: 100%;
-        height: auto;
 
         @media (min-width: 768px) {
-            padding: 4rem;              
+
         }
 
         @media (min-width: 1024px) {
-            padding: 2rem;
+
         }
 
-        .bg_section{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: absolute;
-            display: none;
 
-            @media (min-width: 1024px) {
-                display: block;             
-            }
 
-            @media (min-width: 1280px) {
-                display: none;             
-            }
+
+
+
+        .card-wrapper-outline{
+            @include flexCenter;
+            padding: 0.5rem;
+            background: radial-gradient(#ffffff, #f9ae3b);
+            outline: solid 2px #ffffff;
+            position: relative;
+
+            
         }
 
-        .bg_sectionsm{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .cube{
+            width: 1rem;
+            height: 1rem;
+            outline: solid 2px #ffffff;
             position: absolute;
-            display: block;
-
-            @media (min-width: 540px) {
-                display: none;                
-            }
         }
 
-        .bg_sectionlg{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: absolute;
-            display: none;
-
-            @media (min-width: 540px) {
-                display: block;                
-            }
-
-            @media (min-width: 1024px) {
-                display: none;                
-            }
+        #cube1{
+            top: 0;
+            left: 0;
         }
 
-        .bg_section2xl{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: absolute;
-            display: none;
+        #cube2{
+            top: 0;
+            right: 0;
+        }
 
-            @media (min-width: 1280px) {
-                display: block;             
-            }
+        #cube3{
+            bottom: 0;
+            left: 0;
+        }
+
+        #cube4{
+            bottom: 0;
+            right: 0;
         }
 
 
         .card-wrapper{
-            width: 80%;
+            width: 100%;
             position: relative;
             @include flexCenter($direction: column);
-            padding: 0.5rem;
+            padding: 0.25rem;
+            background: radial-gradient(#ffffff, #f9ae3b);
+            outline: solid 2px #ffffff;
+
+            @media (min-width: 768px) {
+                padding: 0.5rem;                
+            }
             
 
     
             @media (min-width: 1024px) {
-                width: 80%;
                 @include flexCenter;
                 padding: 1rem;      
             }
@@ -592,11 +697,11 @@ body{
     
                 .card{         
                     @include flexCenter($align-items: start,$direction: column);
-                    min-width: 150px;
-                    max-width: 300px;
                     justify-self: center;
                     transition: all 0.3s;
                     margin: 0.5rem;
+                    min-width: 150px;
+                    max-width: 250px;
                     
     
                     @media (min-width: 768px) {
@@ -626,41 +731,50 @@ body{
                         width: 100%;
                         border-bottom-left-radius: 8px;
                         border-bottom-right-radius: 8px;
+                        padding: 1rem;
         
                         &__title{
-                            margin: 1rem 1rem 0;
                             min-height: 75px;
+                            width: 100%;
+
+                            @media (min-width: 768px) {   
+                            }
                         }
         
-                        &__info{
-                            @include flexCenter($justify: space-between);
-                            width: 100%;
-        
-                            &--price{
-                                @include flexCenter($direction: column,$align_items: baseline);
-                                margin: 1rem 0;
-    
-                                @media (min-width: 1024px) {
-    
-                                }
-                                
-                                h6{
-                                    color: #8F2A29;
-                                }
-    
-                                span{
-                                    margin: 0 0 0.5rem 1rem;
-                                    text-decoration: line-through;
-                                }
+                        &__price{
+                            @include flexCenter($direction: column,$align_items: baseline);
+                            margin: 1rem 0;
+
+                            @media (min-width: 1024px) {
+
                             }
-        
-                            &--cta{
-                                padding: 0.5rem;
-                                margin: 0.5rem;
-                                font-size: 1.5rem;
-                            }
-        
                             
+                            h6{
+                                color: #8F2A29;
+                            }
+
+                            span{
+                                margin: 0 0 0.5rem 0rem;
+                                text-decoration: line-through;
+                            }
+                        }
+    
+                        &__cta{
+                            padding: 0.5rem;
+                            font-size: 1rem;
+                            background-color: #8F2A29;
+                            color: #ffffff;
+                            @include flexCenter;
+                            border-radius: 4px;
+                            width: 100%;
+
+                            @media (min-width: 768px) {
+                            }
+
+                            &:hover{
+                                background-color: #C63A39;                                    
+                            }
+
                         }
                     }
                 }
@@ -676,7 +790,7 @@ body{
 footer{
     @include flexCenter($align-items: start ,$direction: column);    
     width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     background: #FAFAFA;
 
     @media (min-width: 1024px) {
@@ -709,12 +823,19 @@ footer{
         
     
 
-    .contact{
-        @include flexCenter($justify: start);
+    .brand_logo{
+        @include flexCenter;
         width: 100%;
+        border-radius: 4px;
+        background-color: #8F2A29;
+
 
         @media (min-width: 1024px) {
             width: 30%;            
+        }
+
+        img{
+            margin: 1rem;
         }
 
 
