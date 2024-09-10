@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+/*document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger)
 });
 
@@ -42,6 +42,7 @@ gsap.from('#section5',{
     y: 200,
     ease: 'power1.inOut',
 });
+*/
 
 gsap.from('.bar-up',{
     scrollTrigger: {

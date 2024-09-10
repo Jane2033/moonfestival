@@ -165,6 +165,8 @@ body{
             @include flexCenter($justify: start);
             list-style: none;
             overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-snap-align: center;
 
 
             @media (min-width: 640px) {
@@ -172,7 +174,7 @@ body{
             }
 
             &__item{             
-                min-width: 150px;
+                min-width: 110px;
                 @include flexCenter;  
 
                 @media (min-width: 640px) {
@@ -208,7 +210,9 @@ body{
         position: fixed;
         bottom: 0;
         right: 0;
-        padding: 0.09375rem 0.5rem;
+        width: 48px;
+        height: 48px;
+        @include flexCenter;
         margin: 0.5rem;
         font-size: 32px;
         background: #ffffff;
@@ -224,6 +228,7 @@ body{
     position: relative;
     overflow-x: hidden;
     overflow-y: clip;
+    
 
     @media (min-width: 768px) {
         
@@ -394,10 +399,10 @@ body{
 }
 
 .sec{
-    position: relative;
     width: 100%;
     overflow-x: hidden;
-    margin-bottom: 7rem;
+    overflow-y: clip;
+    margin-bottom: 8rem;
 }
 
 
@@ -407,7 +412,6 @@ body{
     background: url('../img/bg_s2.png');
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
     overflow-x: hidden;
     width: 100%;
     height: 100vh;
@@ -478,7 +482,6 @@ body{
 
 
             &__items{
-                position: relative;
                 display: none;
                 width: 100%;                
 
@@ -594,6 +597,7 @@ body{
 .s_product{
     @include flexCenter($direction: column);
     width: 100%;
+    position: relative;
 
 
     .s_product_title{
@@ -602,7 +606,7 @@ body{
 
         img{            
             width: 100%;
-            margin-top: 7rem;
+            margin-top: 8rem;
             
 
             @media (min-width: 1024px) {
@@ -626,10 +630,6 @@ body{
         }
 
 
-
-
-
-
         .card-wrapper-outline{
             @include flexCenter;
             padding: 0.5rem;
@@ -637,7 +637,6 @@ body{
             outline: solid 2px #ffffff;
             position: relative;
 
-            
         }
 
         .cube{
@@ -670,7 +669,6 @@ body{
 
         .card-wrapper{
             width: 100%;
-            position: relative;
             @include flexCenter($direction: column);
             padding: 0.25rem;
             background: radial-gradient(#ffffff, #f9ae3b);
@@ -836,6 +834,8 @@ footer{
 
         img{
             margin: 1rem;
+            max-width: 60px;
+
         }
 
 
