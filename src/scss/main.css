@@ -249,9 +249,6 @@ body header .navbar-sub {
     flex-direction: row;
   }
 }
-body header .navbar-sub::-webkit-scrollbar {
-  width: 0;
-}
 body header .navbar-sub__item {
   min-width: 110px;
   display: flex;
