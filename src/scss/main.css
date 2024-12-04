@@ -158,7 +158,7 @@ a, a:visited, a:active {
 
 body {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   position: relative;
@@ -233,7 +233,7 @@ body header .navbar__main__item:hover::after {
 }
 body header .navbar-sub {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row;
   list-style: none;
@@ -333,33 +333,28 @@ body .bar-up {
 .hero__container__content .title_img {
   margin-top: 7rem;
   animation: breathe 1s ease-in-out;
-  max-width: 300px;
+  max-width: 350px;
 }
 @media (min-width: 768px) {
   .hero__container__content .title_img {
-    max-width: 400px;
-  }
-}
-@media (min-width: 1024px) {
-  .hero__container__content .title_img {
-    max-width: 600px;
+    max-width: 550px;
   }
 }
 .hero__container__content .subtitle_img {
-  max-width: 300px;
+  max-width: 350px;
   animation: mymove 1.6s ease-in-out;
 }
 @media (min-width: 768px) {
   .hero__container__content .subtitle_img {
-    max-width: 350px;
+    max-width: 500px;
   }
 }
 @media (min-width: 1024px) {
   .hero__container__content .subtitle_img {
-    max-width: 400px;
+    max-width: 450px;
   }
 }
-.hero__container #moon, .hero__container #fg-right, .hero__container #fg-left, .hero__container #leaf-right, .hero__container #leaf-left {
+.hero__container #moon, .hero__container #fg-right, .hero__container #fg-left, .hero__container #leaf-right, .hero__container #leaf-left, .hero__container #fg-right-md, .hero__container #fg-left-md {
   position: absolute;
   top: 0;
   left: 0;
@@ -367,6 +362,22 @@ body .bar-up {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.hero__container #fg-right, .hero__container #fg-left {
+  display: none;
+}
+@media (min-width: 640px) {
+  .hero__container #fg-right, .hero__container #fg-left {
+    display: block;
+  }
+}
+.hero__container #fg-right-md, .hero__container #fg-left-md {
+  display: block;
+}
+@media (min-width: 640px) {
+  .hero__container #fg-right-md, .hero__container #fg-left-md {
+    display: none;
+  }
 }
 .hero__container__cloud {
   width: 100%;
@@ -507,7 +518,7 @@ body .bar-up {
 }
 .section2__container .free {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   margin: 1.5rem;
@@ -718,7 +729,7 @@ body .bar-up {
 .s_product .s_product_container .card-wrapper a .card {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   justify-self: center;
   transition: all 0.3s;
@@ -737,7 +748,7 @@ body .bar-up {
 .s_product .s_product_container .card-wrapper a .card__body {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   background: #ffffff;
   width: 100%;
@@ -782,7 +793,7 @@ body .bar-up {
 footer {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   width: 100%;
   padding: 1rem;
@@ -798,8 +809,8 @@ footer ul li {
 }
 footer .footer__content {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   width: 100%;
 }
@@ -807,7 +818,7 @@ footer .footer__content {
   footer .footer__content {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: row;
   }
 }
@@ -839,7 +850,7 @@ footer .brand_logo img {
 }
 footer .otherinfo {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row;
   width: 100%;
@@ -848,7 +859,7 @@ footer .otherinfo {
   footer .otherinfo {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: row;
     width: 30%;
   }
@@ -856,7 +867,7 @@ footer .otherinfo {
 footer .aboutus {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   margin-right: 2rem;
 }
@@ -864,7 +875,7 @@ footer .aboutus__items {
   margin: 0.75rem 0 0;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
 }
 footer .aboutus__items__item {
@@ -905,8 +916,8 @@ footer .follow {
 }
 footer .follow__items {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
   margin: 1rem 0 0;

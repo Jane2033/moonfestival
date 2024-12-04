@@ -92,7 +92,7 @@
 }
 
 body{
-    @include flexCenter($justify:start, $direction:column);
+    @include flexCenter($justify:flex-start, $direction:column);
     position: relative;
     background: url('../img/bg.jpg');
     background-repeat: no-repeat;
@@ -162,7 +162,7 @@ body{
         }
 
         .navbar-sub{
-            @include flexCenter($justify: start);
+            @include flexCenter($justify: flex-start);
             list-style: none;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
@@ -260,42 +260,57 @@ body{
             .title_img{
                 margin-top: 7rem;
                 animation: breathe 1s ease-in-out;
-                max-width: 300px;
+                max-width: 350px;
 
-                @media (min-width: 640px) {  
+                @media (min-width: 768px) {  
+                    max-width: 550px; 
                 }
 
-                @media (min-width: 768px) { 
-                    max-width: 400px;  
+                @media (min-width: 992px) { 
                 }
 
-                @media (min-width: 1024px){
-                    max-width: 600px;                     
+                @media (min-width: 1024px){                    
                 }
             }
 
             .subtitle_img{
-                max-width: 300px;
+                max-width: 350px;
                 animation: mymove 1.6s ease-in-out;
 
                 @media (min-width: 768px) { 
-                    max-width: 350px; 
+                    max-width: 500px; 
                 }
 
                 @media (min-width: 1024px) { 
-                    max-width: 400px; 
+                    max-width: 450px; 
                 }
             }       
 
         }
 
-        #moon, #fg-right, #fg-left, #leaf-right, #leaf-left{
+        #moon, #fg-right, #fg-left, #leaf-right, #leaf-left, #fg-right-md, #fg-left-md{
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        #fg-right, #fg-left{
+            display: none;
+
+            @media (min-width: 640px) {
+                display: block;                
+            }
+        }
+
+        #fg-right-md, #fg-left-md{
+            display: block;
+
+            @media (min-width: 640px) {
+                display: none;                
+            }
         }
 
         &__cloud{
@@ -463,7 +478,7 @@ body{
 
 
         .free{
-            @include flexCenter($justify: start,$direction: column);            
+            @include flexCenter($justify: flex-start,$direction: column);            
             margin: 1.5rem;
 
             @media (min-width: 640px) {
@@ -694,7 +709,7 @@ body{
                 @include flexCenter;
     
                 .card{         
-                    @include flexCenter($align-items: start,$direction: column);
+                    @include flexCenter($align-items: flex-start,$direction: column);
                     justify-self: center;
                     transition: all 0.3s;
                     margin: 0.5rem;
@@ -724,7 +739,7 @@ body{
         
         
                     &__body{
-                        @include flexCenter($align_items: start, $direction: column);
+                        @include flexCenter($align_items: flex-start, $direction: column);
                         background: #ffffff;
                         width: 100%;
                         border-bottom-left-radius: 8px;
@@ -786,7 +801,7 @@ body{
 
 
 footer{
-    @include flexCenter($align-items: start ,$direction: column);    
+    @include flexCenter($align-items: flex-start ,$direction: column);    
     width: 100%;
     padding: 1rem;
     background: #FAFAFA;
@@ -800,11 +815,11 @@ footer{
     }
 
     .footer__content{
-        @include flexCenter($justify: start ,$align-items: start ,$direction: column);
+        @include flexCenter($justify: flex-start ,$align-items: flex-start ,$direction: column);
         width: 100%;
 
         @media (min-width: 1024px) {
-            @include flexCenter($justify: space-between,$align-items: start, $direction: row);            
+            @include flexCenter($justify: space-between,$align-items: flex-start, $direction: row);            
         }
     }
 
@@ -842,21 +857,21 @@ footer{
     }
 
     .otherinfo{
-        @include flexCenter($justify: start);
+        @include flexCenter($justify: flex-start);
         width: 100%;
 
         @media (min-width: 1024px) {
-            @include flexCenter($justify: space-between, $align-items: start);
+            @include flexCenter($justify: space-between, $align-items: flex-start);
             width: 30%;            
         }
     }
 
     .aboutus{
-        @include flexCenter($align_items: start ,$direction: column);
+        @include flexCenter($align_items: flex-start ,$direction: column);
         margin-right: 2rem;
         &__items{
             margin: 0.75rem 0 0;
-            @include flexCenter($align_items: start ,$direction: column);
+            @include flexCenter($align_items: flex-start ,$direction: column);
             
 
             &__item{
@@ -892,7 +907,7 @@ footer{
         }
 
         &__items{
-            @include flexCenter($align-items: start, $justify: start, $direction: column);
+            @include flexCenter($align-items: flex-start, $justify: flex-start, $direction: column);
             gap: 0.5rem;
             margin: 1rem 0 0;
 
